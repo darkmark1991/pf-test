@@ -1,0 +1,152 @@
+
+@import '../../colors';
+
+.rule-fieldset {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: stretch;
+    margin-bottom: 1rem;
+
+    &+.rule-fieldset {
+        margin-top: 2rem;
+    
+        &:before {
+            content: 'OR';
+            position: absolute;
+                top: -1.5rem;
+                left: 2.5rem;
+            font-weight: bold;
+            color: $grey2;
+        }
+    }
+
+    &:last-child {
+        margin-bottom: 1rem;
+    }
+
+    .rule-field {
+        padding: .5rem .75rem;
+        background-color: $white;
+        color: $grey4;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.2rem;
+        border: 1px $grey2 solid;
+        border-radius: .25rem;
+        transition:
+            border-color .15s ease-in-out,
+            box-shadow .15s ease-in-out;
+
+        &:disabled {
+            display: none;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $paleblue;
+            box-shadow: 0 0 0 0.2rem $shadowblue;
+        }
+
+        &.rule-select {
+            width: 15rem;
+            margin-right: 2rem;
+        }
+    }
+
+    .rule-input-wrapper {
+        flex-grow: 1;
+        display: inline-flex;
+        flex-direction: column;
+        position: relative;
+        margin-right: 2rem;
+
+        .rule-input {
+            width: 100%;
+            box-sizing: border-box;
+
+            &.ng-touched.ng-invalid {
+                border-color: $palered;
+                outline: none;
+                &:focus {
+                    box-shadow: 0 0 0 0.2rem $shadowred;
+                }                
+            }
+        }
+
+        .rule-input-error {
+            color: $danger;
+            background-color: $palepink;
+            padding: 0.75rem 1rem;
+            margin-bottom: -1rem;
+            border: 1px solid $pink;
+            border-radius: 0.25rem;
+        }
+    }
+
+    .rule-del-btn {
+        position: relative;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin-top: .45rem;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 18px;
+        color: $grey3;
+        border: 2px $grey3 solid;
+        border-radius: 1rem;
+        transition:
+            color .15s ease-in-out,
+            border-color .15s ease-in-out;
+
+        &::after {
+            content: '×';
+            width: 10px;
+            position: absolute;
+                left: calc(50% - 5px);
+        }
+
+        &:hover {
+            color: $darkpink;
+            border-color: $darkpink;
+            cursor: pointer;
+        }
+    }
+    .rule-del-btn-alt {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .rule-fieldset {
+        .rule-field.rule-select {
+            margin-right: 1rem;
+            width: 7.5rem;
+        }
+        .rule-input-wrapper {
+            margin-right: 1rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .rule-fieldset {
+        flex-direction: column;
+        .rule-field.rule-select,
+        .rule-input-wrapper {
+            width: 100%;
+            margin-bottom: .25rem;
+        }
+        .rule-input-wrapper .rule-input-error {
+            margin-bottom: 0;
+        }
+        .rule-del-btn {
+            display: none;
+        }
+        .rule-del-btn-alt {
+            display: inline-flex;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+<div *ngFor="let rule of rules.controls; index as i" [formGroup]="rule" class="rule-fieldset">
+    <select formControlName="matchType" (change)="changeMatchType(i)" class="rule-field rule-select">
+        <option *ngFor="let opt of matchTypeOptions" [ngValue]="opt.value">{{ opt.label }}</option>
+    </select>
+    <select *ngIf="rule.get('matchType').value === '_custom'" formControlName="extraSelect" (change)="changeExtraSelect(i)" class="rule-field rule-select">
+        <option *ngFor="let opt of extraSelectOptions" [ngValue]="opt.value">{{ opt.label }}</option>
+    </select>
+    <div *ngIf="rule.get('matchType').value === '_custom'" class="rule-input-wrapper">
+        <input type="text" formControlName="matchInput" class="rule-field rule-input"
+            [placeholder]="rule.value.extraSelect === 'exact_match' ? 'Type a full URL' : 'Type a full or partial URL'">
+        <div class="rule-input-error" *ngIf="rule.get('matchInput').status === 'INVALID' && rule.get('matchInput').touched">
+            {{ !!rule.get('matchInput').errors?.required ? 'URL is missing' 
+                : !!rule.get('matchInput').errors?.maxLength ? 'URL is too long' : 'Invalid URL' }}
+        </div>
+    </div>
+    <a (click)="delRule(i)" class="rule-del-btn"></a>
+    <a (click)="delRule(i)" class="rule-del-btn-alt btn btn-red">REMOVE</a>
+</div>
+<a (click)="addRule()" class="btn btn-outline">+ NEW RULE</a>

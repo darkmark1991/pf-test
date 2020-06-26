@@ -1,0 +1,85 @@
+
+
+@import '../colors';
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card {
+    background-color: $white;
+    box-sizing: border-box;
+    width: 1180px;
+    margin: 1rem auto;
+    border: 1px $palegrey solid;
+    border-radius: .35rem;
+    box-shadow: 0 2px 12px 0 $shadowgrey;
+}
+
+.content {
+    margin: 1rem auto;
+
+    .content-header {
+        padding: 1.25rem;
+        border-bottom: 1px $palegrey solid;
+
+        .content-title {
+            font-size: 15px;
+            color: $titlegrey;
+        }
+    }
+
+    .rules-wrapper {
+        padding: 1.25rem;
+
+        .rules {
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px $palegrey solid;
+            border-radius: .25rem;
+            box-shadow: 3px 3px 0 0 $shadowgrey2;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .rules-title {
+                font-size: 18px;
+            }
+
+            .rules-subtitle {
+                display: block;
+                color: $titlegrey;
+                margin: .5rem 0 1rem;
+            }
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    bottom: .5rem;
+    left: calc(50% - 590px);
+    padding: 1rem 1.25rem;
+
+    .btn-green {
+        margin-right: .5rem;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .card {
+      width: 960px;
+    }
+}
+@media only screen and (max-width: 960px) {
+    .card {
+        width: 100%;
+    }
+}

@@ -102,10 +102,11 @@
             border-color .15s ease-in-out;
 
         &::after {
-            content: '×';
-            width: 10px;
-            position: absolute;
-                left: calc(50% - 5px);
+          content: "×";
+          font-size: 15px;
+          position: absolute;
+            left: calc(50% - 5px);
+            top: calc(50% - 10px);
         }
 
         &:hover {
